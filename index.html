@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Website</title>
+    <style>
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Your Website</h1>
+    <p>Click the button below to make a deposit:</p>
+    <button class="button" id="depositButton">Deposit</button>
+
+    <script>
+        // Define your API key
+        const apiKey = 'YOUR_API_KEY';
+
+        // Function to handle deposit
+        function deposit() {
+            // Example API call
+            fetch('https://api.example.com/deposit?key=' + apiKey, {
+                method: 'POST',
+                body: JSON.stringify({ amount: 100 }) // Example amount, modify as needed
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Handle the API response
+                console.log('Deposit successful:', data);
+                alert('Deposit successful!');
+            })
+            .catch(error => {
+                // Handle any errors
+                console.error('Error depositing funds:', error);
+                alert('Error depositing funds. Please try again later.');
+            });
+        }
+
+        // Attach event listener to the deposit button
+        document.getElementById('depositButton').addEventListener('click', deposit);
+    </script>
+</body>
+</html>
